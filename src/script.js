@@ -31,8 +31,7 @@ let scrollTimeout = null;
 
 
 
-
-brandingLoader.load("/models/branding.glb", (gltf) => {
+brandingLoader.load("https://jhfyj.github.io/website-code/models/branding.glb", (gltf) => {
   const BrandingmodelScene = gltf.scene;
   cards[0] = BrandingmodelScene;
 
@@ -56,7 +55,7 @@ brandingLoader.load("/models/branding.glb", (gltf) => {
 
 
 
-aboutMeLoader.load("/models/aboutme.glb", (gltf) => {
+aboutMeLoader.load("https://jhfyj.github.io/website-code/models/aboutme.glb", (gltf) => {
   const AboutMemodelScene = gltf.scene;
   cards[1] = AboutMemodelScene;
 
@@ -76,7 +75,7 @@ aboutMeLoader.load("/models/aboutme.glb", (gltf) => {
   console.log("Model About children:", AboutMemodelScene.children);
 });
 
-graphicDesignLoader.load("/models/graphicdesign.glb", (gltf) => {
+graphicDesignLoader.load("https://jhfyj.github.io/website-code/models/graphicdesign.glb", (gltf) => {
   
   const GraphicDesignmodelScene = gltf.scene;
 
@@ -98,7 +97,7 @@ graphicDesignLoader.load("/models/graphicdesign.glb", (gltf) => {
 
 });
 
-immersiveexperieinceLoader.load("/models/immersive.glb", (gltf) => {
+immersiveexperieinceLoader.load("https://jhfyj.github.io/website-code/models/immersive.glb", (gltf) => {
   console.log("MODEL LOADED:", gltf);
   
   const ImmersiveExperiencemodelScene = gltf.scene;
@@ -121,7 +120,7 @@ immersiveexperieinceLoader.load("/models/immersive.glb", (gltf) => {
   // console.log("Model children:", ImmersiveExperiencemodelScene.children);
 });
 
-motiongraphicLoader.load("/models/motiongraphic.glb", (gltf) => {
+motiongraphicLoader.load("https://jhfyj.github.io/website-code/models/motiongraphic.glb", (gltf) => {
   const MotionGraphicModelScene = gltf.scene;
   cards[0] = MotionGraphicModelScene;
 
