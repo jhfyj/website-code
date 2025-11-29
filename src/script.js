@@ -369,6 +369,12 @@ canvas.addEventListener("pointerdown", (e) => {
   previousMouseX = e.clientX;
 });
 
+window.addEventListener("load", () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+
 // pointer up anywhere
 window.addEventListener("pointerup", () => {
   isDragging = false;
@@ -433,6 +439,19 @@ renderloop();
 function sendSignal() {
   console.log("Signal: Button pressed");
 }
+
+// function handleResize() {
+//     const width = window.innerWidth;
+//     const height = window.innerHeight;
+
+//     // Update camera
+//     camera.aspect = width / height;
+//     camera.updateProjectionMatrix();
+
+//     // Update renderer
+//     renderer.setSize(width, height);
+//     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+// }
 
 function snaptoNearestCard() {
   const anglePerCard = (Math.PI*2)/cardCount;
