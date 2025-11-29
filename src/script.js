@@ -212,7 +212,7 @@ uiuxLoader.load("https://jhfyj.github.io/website-code/models/uiux.glb", (gltf) =
 afterdarkLoader.load("https://jhfyj.github.io/website-code/models/afterdark.glb", (gltf) => {
   const AfterdarkModelScene = gltf.scene;
   cards[8] = AfterdarkModelScene; 
-  AfterdarkModelScene.scale.set(0.3, 0.3, 0.3);
+  AfterdarkModelScene.scale.set(0.2, 0.2, 0.2);
   AfterdarkModelScene.position.set(Math.sin(THREE.MathUtils.degToRad(8* 360/9)) * 3, 0, Math.cos(THREE.MathUtils.degToRad(8* 360/9)) * 3);
   AfterdarkModelScene.rotation.y = THREE.MathUtils.degToRad(8* 360/9);
   Afterdarkbutton = AfterdarkModelScene.getObjectByName("button");
