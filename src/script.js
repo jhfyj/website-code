@@ -12,6 +12,7 @@ const motiongraphicLoader = new GLTFLoader();
 const fineartLoader = new GLTFLoader();
 const installationLoader = new GLTFLoader();
 const uiuxLoader = new GLTFLoader();
+const afterdarkLoader = new GLTFLoader();
 
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
@@ -26,6 +27,7 @@ let MotionGraphicbutton = null;
 let FineArtbutton = null;
 let Installationbutton = null;
 let UiUxbutton = null;
+let Afterdarkbutton = null;
 const cardgroup = new THREE.Group();
 const cards = [];
 
@@ -207,6 +209,23 @@ uiuxLoader.load("https://jhfyj.github.io/website-code/models/uiux.glb", (gltf) =
   cardgroup.add(UiUxModelScene);
 });
 
+afterdarkLoader.load("https://jhfyj.github.io/website-code/models/afterdark.glb", (gltf) => {
+  const AfterdarkModelScene = gltf.scene;
+  cards[8] = AfterdarkModelScene; 
+  AfterdarkModelScene.scale.set(0.3, 0.3, 0.3);
+  AfterdarkModelScene.position.set(Math.sin(THREE.MathUtils.degToRad(8* 360/9)) * 3, 0, Math.cos(THREE.MathUtils.degToRad(8* 360/9)) * 3);
+  AfterdarkModelScene.rotation.y = THREE.MathUtils.degToRad(8* 360/9);
+  Afterdarkbutton = AfterdarkModelScene.getObjectByName("button");
+  console.log("Afterdark object:", Afterdarkbutton);
+  AfterdarkModelScene.traverse((child) => {
+    if (child.isMesh) {
+      child.material.envMapIntensity = 0;
+    }
+  });
+  // scene.add(AfterdarkModelScene);
+  cardgroup.add(AfterdarkModelScene);
+});
+
 
 scene.add(cardgroup);
 
@@ -334,6 +353,13 @@ window.addEventListener("click", (event) => {
     if (UiUxintersects.length > 0) {
       sendSignal();
       window.location.href = "https://hfyj-art.com/uiux/";
+    }
+  }
+      if (Afterdarkbutton){
+    const Afterdarkintersects = raycaster.intersectObject(Afterdarkbutton, true);
+    if (Afterdarkintersects.length > 0) {
+      sendSignal();
+      window.location.href = "https://hfyj-art.com/afterdark/";
     }
   }
 });
