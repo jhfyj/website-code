@@ -111,6 +111,8 @@ immersiveexperieinceLoader.load("https://jhfyj.github.io/website-code/models/imm
   ImmersiveExperiencemodelScene.position.set(Math.sin(THREE.MathUtils.degToRad(3* 360/9)) * 3, 0, Math.cos(THREE.MathUtils.degToRad(3* 360/9)) * 3);
   ImmersiveExperiencemodelScene.rotation.y = THREE.MathUtils.degToRad(3* 360/9);
   ImmersiveExperiencemodelScene.scale.set(0.2, 0.2, 0.2);
+  Immersivebutton = ImmersiveExperiencemodelScene.getObjectByName("button");
+  console.log("Immersive button:", Immersivebutton);
   ImmersiveExperiencemodelScene.traverse((child) => {
     if (child.isMesh) {
       child.material.envMapIntensity = 0;
@@ -132,7 +134,7 @@ motiongraphicLoader.load("https://jhfyj.github.io/website-code/models/motiongrap
   MotionGraphicModelScene.rotation.y = THREE.MathUtils.degToRad(4* 360/9);
 
  MotionGraphicbutton = MotionGraphicModelScene.getObjectByName("button");
-  console.log("About Button object:", MotionGraphicbutton);
+  console.log("Motion Graphic button object:", MotionGraphicbutton);
   MotionGraphicModelScene.traverse((child) => {
     if (child.isMesh) {
       child.material.envMapIntensity = 0;
@@ -153,7 +155,7 @@ fineartLoader.load("https://jhfyj.github.io/website-code/models/fineart.glb", (g
   FineArtModelScene.rotation.y = THREE.MathUtils.degToRad(5* 360/9);
 
  FineArtbutton = FineArtModelScene.getObjectByName("button");
-  console.log("About Button object:", FineArtbutton);
+  console.log("Fineart object:", FineArtbutton);
   FineArtModelScene.traverse((child) => {
     if (child.isMesh) {
       child.material.envMapIntensity = 0;
