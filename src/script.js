@@ -9,6 +9,7 @@ const aboutMeLoader = new GLTFLoader();
 const graphicDesignLoader = new GLTFLoader();
 const immersiveexperieinceLoader = new GLTFLoader();
 const motiongraphicLoader = new GLTFLoader();
+const fineartLoader = new GLTFLoader();
 
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
@@ -20,6 +21,7 @@ let Aboutbutton = null;
 let Immersivebutton = null;
 let Brandingbutton = null;
 let MotionGraphicbutton = null;
+let FineArtbutton = null;
 const cardgroup = new THREE.Group();
 const cards = [];
 
@@ -141,6 +143,28 @@ motiongraphicLoader.load("https://jhfyj.github.io/website-code/models/motiongrap
   // console.log("Model Branding children:", MotionGraphicModelScene.children);
 });
 
+fineartLoader.load("https://jhfyj.github.io/website-code/models/fineart.glb", (gltf) => {
+  const FineArtModelScene = gltf.scene;
+  cards[5] = FineArtModelScene;
+
+  // MotionGraphicModelScene.position.set(0, 0, 0);
+  FineArtModelScene.scale.set(0.2, 0.2, 0.2);
+  FineArtModelScene.position.set(Math.sin(THREE.MathUtils.degToRad(5* 360/9)) * 3, 0, Math.cos(THREE.MathUtils.degToRad(5* 360/9)) * 3);
+  FineArtModelScene.rotation.y = THREE.MathUtils.degToRad(5* 360/9);
+
+ FineArtbutton = FineArtModelScene.getObjectByName("button");
+  console.log("About Button object:", FineArtbutton);
+  FineArtModelScene.traverse((child) => {
+    if (child.isMesh) {
+      child.material.envMapIntensity = 0;
+    }
+  });
+  // scene.add(FineArtModelScene);
+  cardgroup.add(FineArtModelScene);
+  // console.log("Model Branding children:", FineArtModelScene.children);
+});
+  
+
 
 scene.add(cardgroup);
 
@@ -234,6 +258,18 @@ window.addEventListener("click", (event) => {
   if (MotionGraphicbutton){
     const MotionGraphicintersects = raycaster.intersectObject(MotionGraphicbutton, true);
     if (MotionGraphicintersects.length > 0) {
+      sendSignal();
+    }
+  }
+    if (Immersivebutton){
+    const Immersiveintersects = raycaster.intersectObject(Immersivebutton, true);
+    if (Immersiveintersects.length > 0) {
+      sendSignal();
+    }
+  }
+      if (FineArtbutton){
+    const FineArtintersects = raycaster.intersectObject(FineArtbutton, true);
+    if (FineArtintersects.length > 0) {
       sendSignal();
     }
   }
