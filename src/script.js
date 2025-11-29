@@ -11,6 +11,7 @@ const immersiveexperieinceLoader = new GLTFLoader();
 const motiongraphicLoader = new GLTFLoader();
 const fineartLoader = new GLTFLoader();
 const installationLoader = new GLTFLoader();
+const uiuxLoader = new GLTFLoader();
 
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
@@ -24,6 +25,7 @@ let Brandingbutton = null;
 let MotionGraphicbutton = null;
 let FineArtbutton = null;
 let Installationbutton = null;
+let UiUxbutton = null;
 const cardgroup = new THREE.Group();
 const cards = [];
 
@@ -187,6 +189,25 @@ installationLoader.load("https://jhfyj.github.io/website-code/models/installatio
   cardgroup.add(InstallationModelScene);
 });
 
+uiuxLoader.load("https://jhfyj.github.io/website-code/models/uiux.glb", (gltf) => {
+  const UiUxModelScene = gltf.scene;
+  cards[7] = UiUxModelScene;
+
+  UiUxModelScene.scale.set(0.2, 0.2, 0.2);
+  UiUxModelScene.position.set(Math.sin(THREE.MathUtils.degToRad(7* 360/9)) * 3, 0, Math.cos(THREE.MathUtils.degToRad(7* 360/9)) * 3);
+  UiUxModelScene.rotation.y = THREE.MathUtils.degToRad(7* 360/9);
+  UiUxbutton = UiUxModelScene.getObjectByName("button");
+  console.log("Installation object:", UiUxbutton);
+  UiUxModelScene.traverse((child) => {
+    if (child.isMesh) {
+      child.material.envMapIntensity = 0;
+    }
+  });
+  // scene.add(UiUxModelScene);
+  cardgroup.add(UiUxModelScene);
+});
+
+
 scene.add(cardgroup);
 
 
@@ -305,6 +326,14 @@ window.addEventListener("click", (event) => {
     if (Installationintersects.length > 0) {
       sendSignal();
       window.location.href = "https://hfyj-art.com/installations/";
+    }
+  }
+
+      if (UiUxbutton){
+    const UiUxintersects = raycaster.intersectObject(UiUxbutton, true);
+    if (UiUxintersects.length > 0) {
+      sendSignal();
+      window.location.href = "https://hfyj-art.com/uiux/";
     }
   }
 });
