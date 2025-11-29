@@ -291,13 +291,28 @@ window.addEventListener("resize", () => {
   renderer.setSize(window.innerWidth, window.innerHeight);
 });
 
+
 window.addEventListener("click", (event) => {
-  // convert mouse to NDC
-  mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-  mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+    mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
-  raycaster.setFromCamera(mouse, camera);
+    raycaster.setFromCamera(mouse, camera);
 
+    checkButtonIntersections();
+});
+
+window.addEventListener("touchstart", (event) => {
+    const touch = event.touches[0];
+
+    mouse.x = (touch.clientX / window.innerWidth) * 2 - 1;
+    mouse.y = -(touch.clientY / window.innerHeight) * 2 + 1;
+
+    raycaster.setFromCamera(mouse, camera);
+
+    checkButtonIntersections();
+});
+
+function checkButtonIntersections() {
   if (Aboutbutton) {
     const Aboutintersects = raycaster.intersectObject(Aboutbutton, true);
     if (Aboutintersects.length > 0) {
@@ -362,7 +377,8 @@ window.addEventListener("click", (event) => {
       window.location.href = "https://hfyj-art.com/afterdark/";
     }
   }
-});
+}
+
 // pointer down on the canvas
 canvas.addEventListener("pointerdown", (e) => {
   isDragging = true;
