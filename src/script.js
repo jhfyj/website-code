@@ -301,16 +301,11 @@ window.addEventListener("click", (event) => {
     checkButtonIntersections();
 });
 
-window.addEventListener("touchstart", (event) => {
-    const touch = event.touches[0];
-
-    mouse.x = (touch.clientX / window.innerWidth) * 2 - 1;
-    mouse.y = -(touch.clientY / window.innerHeight) * 2 + 1;
-
-    raycaster.setFromCamera(mouse, camera);
-
+canvas.addEventListener("touchstart", (event) => {
+    event.preventDefault();   // VERY IMPORTANT for mobile tapping
+    getNormalizedPointer(event);
     checkButtonIntersections();
-});
+}, { passive: false });
 
 function checkButtonIntersections() {
   if (Aboutbutton) {
@@ -378,6 +373,24 @@ function checkButtonIntersections() {
     }
   }
 }
+function getNormalizedPointer(event) {
+    const rect = canvas.getBoundingClientRect();
+    let x, y;
+
+    if (event.touches) {
+        x = event.touches[0].clientX;
+        y = event.touches[0].clientY;
+    } else {
+        x = event.clientX;
+        y = event.clientY;
+    }
+
+    mouse.x = ((x - rect.left) / rect.width) * 2 - 1;
+    mouse.y = -((y - rect.top) / rect.height) * 2 + 1;
+
+    raycaster.setFromCamera(mouse, camera);
+}
+
 
 // pointer down on the canvas
 canvas.addEventListener("pointerdown", (e) => {
