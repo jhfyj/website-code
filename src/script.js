@@ -312,49 +312,49 @@ function checkButtonIntersections() {
     const Aboutintersects = raycaster.intersectObject(Aboutbutton, true);
     if (Aboutintersects.length > 0) {
       sendSignal();
-      window.location.href = "https://hfyj-art.com/about/";
+      window.open("https://hfyj-art.com/about/", "_top");
     }
   }
    if (Graphicbutton){
     const Graphicintersects = raycaster.intersectObject(Graphicbutton, true);
     if (Graphicintersects.length > 0) {
       sendSignal();
-      window.location.href = "https://hfyj-art.com/graphicdesign/";
+      window.open("https://hfyj-art.com/graphicdesign/", "_top");
     }
   }
      if (Brandingbutton){
     const Brandingintersects = raycaster.intersectObject(Brandingbutton, true);
     if (Brandingintersects.length > 0) {
       sendSignal();
-      window.location.href = "https://hfyj-art.com/branding/";
+      window.open("https://hfyj-art.com/branding/", "_top");
     }
   }
   if (MotionGraphicbutton){
     const MotionGraphicintersects = raycaster.intersectObject(MotionGraphicbutton, true);
     if (MotionGraphicintersects.length > 0) {
       sendSignal();
-      window.location.href = "https://hfyj-art.com/motiongraphic/";
+      window.open("https://hfyj-art.com/motiongraphic/", "_top");
     }
   }
     if (Immersivebutton){
     const Immersiveintersects = raycaster.intersectObject(Immersivebutton, true);
     if (Immersiveintersects.length > 0) {
       sendSignal();
-      window.location.href = "https://hfyj-art.com/immersiveexperience/";
+      window.open("https://hfyj-art.com/immersiveexperience/", "_top");
     }
   }
       if (FineArtbutton){
     const FineArtintersects = raycaster.intersectObject(FineArtbutton, true);
     if (FineArtintersects.length > 0) {
       sendSignal();
-      window.location.href = "https://hfyj-art.com/fineart/";
+      window.open("https://hfyj-art.com/fineart/", "_top");
     }
   }
     if (Installationbutton){
     const Installationintersects = raycaster.intersectObject(Installationbutton, true);
     if (Installationintersects.length > 0) {
       sendSignal();
-      window.location.href = "https://hfyj-art.com/installations/";
+      window.open("https://hfyj-art.com/installations/", "_top");
     }
   }
 
@@ -362,14 +362,14 @@ function checkButtonIntersections() {
     const UiUxintersects = raycaster.intersectObject(UiUxbutton, true);
     if (UiUxintersects.length > 0) {
       sendSignal();
-      window.location.href = "https://hfyj-art.com/uiux/";
+      window.open("https://hfyj-art.com/uiux/", "_top");
     }
   }
       if (Afterdarkbutton){
     const Afterdarkintersects = raycaster.intersectObject(Afterdarkbutton, true);
     if (Afterdarkintersects.length > 0) {
       sendSignal();
-      window.location.href = "https://hfyj-art.com/afterdark/";
+      window.open("https://hfyj-art.com/afterdark/", "_top");
     }
   }
 }
