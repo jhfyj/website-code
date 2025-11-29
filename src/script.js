@@ -253,11 +253,11 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 // const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
 // scene.add(ambientLight);
 const directionalLight = new THREE.DirectionalLight(0xFFF5A7, 3);
-directionalLight.position.set(0.4,0.3,0.5);
+directionalLight.position.set(0.5,0.2,0.6);
 scene.add(directionalLight);
 
 const directionalLight2 = new THREE.DirectionalLight(0xA7D7FF, 3);
-directionalLight2.position.set(-0.7,-0.3, 0.8);
+directionalLight2.position.set(-0.5,-0.3, 0.6);
 scene.add(directionalLight2);
 
 // const skyColor = 0xB1E1FF;  // light blue
