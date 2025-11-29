@@ -483,13 +483,13 @@ function sendSignal() {
 // }
 
 function snaptoNearestCard() {
-  const anglePerCard = (Math.PI*2)/cardCount;
-let currentRotation = cardgroup.rotation.y % (Math.PI*2);
-if (currentRotation < 0) {
-  currentRotation += Math.PI*2;
-}
-const nearestIndex = Math.round(currentRotation / anglePerCard);
-targetRotation = nearestIndex*anglePerCard;
+    const anglePerCard = (Math.PI * 2) / cardCount;
+
+    // DO NOT normalize rotation
+    const rawRotation = cardgroup.rotation.y;
+
+    const nearestIndex = Math.round(rawRotation / anglePerCard);
+    targetRotation = nearestIndex * anglePerCard;
 }
 
 //hey
