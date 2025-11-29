@@ -10,6 +10,7 @@ const graphicDesignLoader = new GLTFLoader();
 const immersiveexperieinceLoader = new GLTFLoader();
 const motiongraphicLoader = new GLTFLoader();
 const fineartLoader = new GLTFLoader();
+const installationLoader = new GLTFLoader();
 
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
@@ -22,6 +23,7 @@ let Immersivebutton = null;
 let Brandingbutton = null;
 let MotionGraphicbutton = null;
 let FineArtbutton = null;
+let Installationbutton = null;
 const cardgroup = new THREE.Group();
 const cards = [];
 
@@ -165,8 +167,25 @@ fineartLoader.load("https://jhfyj.github.io/website-code/models/fineart.glb", (g
   cardgroup.add(FineArtModelScene);
   // console.log("Model Branding children:", FineArtModelScene.children);
 });
-  
 
+installationLoader.load("https://jhfyj.github.io/website-code/models/installation.glb", (gltf) => {
+  const InstallationModelScene = gltf.scene;
+  cards[6] = InstallationModelScene;
+
+  InstallationModelScene.scale.set(0.2, 0.2, 0.2);
+  InstallationModelScene.position.set(Math.sin(THREE.MathUtils.degToRad(6* 360/9)) * 3, 0, Math.cos(THREE.MathUtils.degToRad(6* 360/9)) * 3);
+  InstallationModelScene.rotation.y = THREE.MathUtils.degToRad(6* 360/9);
+
+  Installationbutton = InstallationModelScene.getObjectByName("button");
+  console.log("Installation object:", Installationbutton);
+  InstallationModelScene.traverse((child) => {
+    if (child.isMesh) {
+      child.material.envMapIntensity = 0;
+    }
+  });
+  // scene.add(InstallationModelScene);
+  cardgroup.add(InstallationModelScene);
+});
 
 scene.add(cardgroup);
 
@@ -243,36 +262,49 @@ window.addEventListener("click", (event) => {
     const Aboutintersects = raycaster.intersectObject(Aboutbutton, true);
     if (Aboutintersects.length > 0) {
       sendSignal();
+      window.location.href = "https://hfyj-art.com/about/";
     }
   }
    if (Graphicbutton){
     const Graphicintersects = raycaster.intersectObject(Graphicbutton, true);
     if (Graphicintersects.length > 0) {
       sendSignal();
+      window.location.href = "https://hfyj-art.com/graphicdesign/";
     }
   }
      if (Brandingbutton){
     const Brandingintersects = raycaster.intersectObject(Brandingbutton, true);
     if (Brandingintersects.length > 0) {
       sendSignal();
+      window.location.href = "https://hfyj-art.com/branding/";
     }
   }
   if (MotionGraphicbutton){
     const MotionGraphicintersects = raycaster.intersectObject(MotionGraphicbutton, true);
     if (MotionGraphicintersects.length > 0) {
       sendSignal();
+      window.location.href = "https://hfyj-art.com/motiongraphic/";
     }
   }
     if (Immersivebutton){
     const Immersiveintersects = raycaster.intersectObject(Immersivebutton, true);
     if (Immersiveintersects.length > 0) {
       sendSignal();
+      window.location.href = "https://hfyj-art.com/immersiveexperience/";
     }
   }
       if (FineArtbutton){
     const FineArtintersects = raycaster.intersectObject(FineArtbutton, true);
     if (FineArtintersects.length > 0) {
       sendSignal();
+      window.location.href = "https://hfyj-art.com/fineart/";
+    }
+  }
+    if (Installationbutton){
+    const Installationintersects = raycaster.intersectObject(Installationbutton, true);
+    if (Installationintersects.length > 0) {
+      sendSignal();
+      window.location.href = "https://hfyj-art.com/installations/";
     }
   }
 });
