@@ -45,8 +45,8 @@ brandingLoader.load("https://jhfyj.github.io/website-code/models/branding.glb", 
 
   // BrandingmodelScene.position.set(0, 0, 0);
   BrandingmodelScene.scale.set(0.2, 0.2, 0.2);
-  BrandingmodelScene.position.set(Math.sin(THREE.MathUtils.degToRad(0* 360/9)) * 3, 0, Math.cos(THREE.MathUtils.degToRad(0* 360/9)) * 3);
-  BrandingmodelScene.rotation.y = THREE.MathUtils.degToRad(0* 360/9);
+  BrandingmodelScene.position.set(Math.sin(THREE.MathUtils.degToRad(1* 360/9)) * 3, 0, Math.cos(THREE.MathUtils.degToRad(1* 360/9)) * 3);
+  BrandingmodelScene.rotation.y = THREE.MathUtils.degToRad(1* 360/9);
 
  Brandingbutton = BrandingmodelScene.getObjectByName("Button");
   console.log("About Button object:", Brandingbutton);
@@ -70,8 +70,8 @@ aboutMeLoader.load("https://jhfyj.github.io/website-code/models/aboutme.glb", (g
   // console.log(AboutMemodelScene);
  Aboutbutton = AboutMemodelScene.getObjectByName("Button");
   console.log("About Button object:", Aboutbutton);
-  AboutMemodelScene.position.set(Math.sin(THREE.MathUtils.degToRad(1* 360/9)) * 3, 0, Math.cos(THREE.MathUtils.degToRad(1* 360/9)) * 3);
-  AboutMemodelScene.rotation.y = THREE.MathUtils.degToRad(1* 360/9);
+  AboutMemodelScene.position.set(Math.sin(THREE.MathUtils.degToRad(8* 360/9)) * 3, 0, Math.cos(THREE.MathUtils.degToRad(8* 360/9)) * 3);
+  AboutMemodelScene.rotation.y = THREE.MathUtils.degToRad(8* 360/9);
   AboutMemodelScene.scale.set(0.2, 0.2, 0.2);
   AboutMemodelScene.traverse((child) => {
     if (child.isMesh) {
@@ -176,7 +176,7 @@ installationLoader.load("https://jhfyj.github.io/website-code/models/installatio
   const InstallationModelScene = gltf.scene;
   cards[6] = InstallationModelScene;
 
-  InstallationModelScene.scale.set(0.2, 0.2, 0.2);
+  InstallationModelScene.scale.set(0.3, 0.3, 0.3);
   InstallationModelScene.position.set(Math.sin(THREE.MathUtils.degToRad(6* 360/9)) * 3, 0, Math.cos(THREE.MathUtils.degToRad(6* 360/9)) * 3);
   InstallationModelScene.rotation.y = THREE.MathUtils.degToRad(6* 360/9);
 
@@ -196,8 +196,8 @@ uiuxLoader.load("https://jhfyj.github.io/website-code/models/uiux.glb", (gltf) =
   cards[7] = UiUxModelScene;
 
   UiUxModelScene.scale.set(0.3, 0.3, 0.3);
-  UiUxModelScene.position.set(Math.sin(THREE.MathUtils.degToRad(7* 360/9)) * 3, 0, Math.cos(THREE.MathUtils.degToRad(7* 360/9)) * 3);
-  UiUxModelScene.rotation.y = THREE.MathUtils.degToRad(7* 360/9);
+  UiUxModelScene.position.set(Math.sin(THREE.MathUtils.degToRad(0* 360/9)) * 3, 0, Math.cos(THREE.MathUtils.degToRad(0* 360/9)) * 3);
+  UiUxModelScene.rotation.y = THREE.MathUtils.degToRad(0* 360/9);
   UiUxbutton = UiUxModelScene.getObjectByName("button");
   console.log("Installation object:", UiUxbutton);
   UiUxModelScene.traverse((child) => {
@@ -213,8 +213,8 @@ afterdarkLoader.load("https://jhfyj.github.io/website-code/models/afterdark.glb"
   const AfterdarkModelScene = gltf.scene;
   cards[8] = AfterdarkModelScene; 
   AfterdarkModelScene.scale.set(0.2, 0.2, 0.2);
-  AfterdarkModelScene.position.set(Math.sin(THREE.MathUtils.degToRad(8* 360/9)) * 3, 0, Math.cos(THREE.MathUtils.degToRad(8* 360/9)) * 3);
-  AfterdarkModelScene.rotation.y = THREE.MathUtils.degToRad(8* 360/9);
+  AfterdarkModelScene.position.set(Math.sin(THREE.MathUtils.degToRad(7* 360/9)) * 3, 0, Math.cos(THREE.MathUtils.degToRad(7* 360/9)) * 3);
+  AfterdarkModelScene.rotation.y = THREE.MathUtils.degToRad(7* 360/9);
   Afterdarkbutton = AfterdarkModelScene.getObjectByName("button");
   console.log("Afterdark object:", Afterdarkbutton);
   AfterdarkModelScene.traverse((child) => {
