@@ -193,7 +193,7 @@ uiuxLoader.load("https://jhfyj.github.io/website-code/models/uiux.glb", (gltf) =
   const UiUxModelScene = gltf.scene;
   cards[7] = UiUxModelScene;
 
-  UiUxModelScene.scale.set(0.2, 0.2, 0.2);
+  UiUxModelScene.scale.set(0.3, 0.3, 0.3);
   UiUxModelScene.position.set(Math.sin(THREE.MathUtils.degToRad(7* 360/9)) * 3, 0, Math.cos(THREE.MathUtils.degToRad(7* 360/9)) * 3);
   UiUxModelScene.rotation.y = THREE.MathUtils.degToRad(7* 360/9);
   UiUxbutton = UiUxModelScene.getObjectByName("button");
