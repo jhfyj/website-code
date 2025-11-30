@@ -37,7 +37,10 @@ const cardCount = 9;
 
 let scrollTimeout = null;
 
+let totalModels = 9;
+let loadedModels = 0;
 
+console.log(document.getElementById("loader"));
 
 brandingLoader.load("https://jhfyj.github.io/website-code/models/branding.glb", (gltf) => {
   const BrandingmodelScene = gltf.scene;
@@ -59,6 +62,7 @@ brandingLoader.load("https://jhfyj.github.io/website-code/models/branding.glb", 
   // scene.add(BrandingmodelScene);
   cardgroup.add(BrandingmodelScene);
   console.log("Model Branding children:", BrandingmodelScene.children);
+  hideLoader();
 });
 
 
@@ -81,6 +85,7 @@ aboutMeLoader.load("https://jhfyj.github.io/website-code/models/aboutme.glb", (g
   // scene.add(AboutMemodelScene);
   cardgroup.add(AboutMemodelScene);
   console.log("Model About children:", AboutMemodelScene.children);
+  hideLoader();
 });
 
 graphicDesignLoader.load("https://jhfyj.github.io/website-code/models/graphicdesign.glb", (gltf) => {
@@ -102,7 +107,7 @@ graphicDesignLoader.load("https://jhfyj.github.io/website-code/models/graphicdes
   // scene.add(GraphicDesignmodelScene);
   console.log("Graphic Design:", GraphicDesignmodelScene.children);
   cardgroup.add(GraphicDesignmodelScene);
-
+  hideLoader();
 });
 
 immersiveexperieinceLoader.load("https://jhfyj.github.io/website-code/models/immersive.glb", (gltf) => {
@@ -126,7 +131,7 @@ immersiveexperieinceLoader.load("https://jhfyj.github.io/website-code/models/imm
   });
   // scene.add(ImmersiveExperiencemodelScene);
       cardgroup.add(ImmersiveExperiencemodelScene);
-
+  hideLoader();
   // console.log("Model children:", ImmersiveExperiencemodelScene.children);
 });
 
@@ -148,6 +153,7 @@ motiongraphicLoader.load("https://jhfyj.github.io/website-code/models/motiongrap
   });
   // scene.add(MotionGraphicModelScene);
   cardgroup.add(MotionGraphicModelScene);
+  hideLoader();
   // console.log("Model Branding children:", MotionGraphicModelScene.children);
 });
 
@@ -169,6 +175,7 @@ fineartLoader.load("https://jhfyj.github.io/website-code/models/fineart.glb", (g
   });
   // scene.add(FineArtModelScene);
   cardgroup.add(FineArtModelScene);
+  hideLoader();
   // console.log("Model Branding children:", FineArtModelScene.children);
 });
 
@@ -189,6 +196,7 @@ installationLoader.load("https://jhfyj.github.io/website-code/models/installatio
   });
   // scene.add(InstallationModelScene);
   cardgroup.add(InstallationModelScene);
+  hideLoader();
 });
 
 uiuxLoader.load("https://jhfyj.github.io/website-code/models/uiux.glb", (gltf) => {
@@ -207,6 +215,7 @@ uiuxLoader.load("https://jhfyj.github.io/website-code/models/uiux.glb", (gltf) =
   });
   // scene.add(UiUxModelScene);
   cardgroup.add(UiUxModelScene);
+  hideLoader();
 });
 
 afterdarkLoader.load("https://jhfyj.github.io/website-code/models/afterdark.glb", (gltf) => {
@@ -224,6 +233,7 @@ afterdarkLoader.load("https://jhfyj.github.io/website-code/models/afterdark.glb"
   });
   // scene.add(AfterdarkModelScene);
   cardgroup.add(AfterdarkModelScene);
+  hideLoader();
 });
 
 
@@ -292,7 +302,7 @@ window.addEventListener("resize", () => {
 });
 
 
-window.addEventListener("click", (event) => {
+canvas.addEventListener("click", (event) => {
     mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
     mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
@@ -491,5 +501,13 @@ function snaptoNearestCard() {
     const nearestIndex = Math.round(rawRotation / anglePerCard);
     targetRotation = nearestIndex * anglePerCard;
 }
+function hideLoader() {
+    loadedModels++;
+    if (loadedModels === totalModels) {
+        document.getElementById("loader").style.display = "none";
+        console.log("All models loaded.");
+    }
+}
+
 
 //hey
