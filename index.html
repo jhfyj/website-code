@@ -1,17 +1,97 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 
 <head>
 	<meta charset="utf-8">
-	<title>Starter</title>
-  <script type="module" crossorigin src="./assets/index-BD08DYfW.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-C4bMZ_fl.css">
+	<title>Starter</title>
+	<link rel="stylesheet" href="./style.css">
+  <script type="module" crossorigin src="./assets/index-CwUWYbn3.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-B6oGh0U4.css">
 </head>
 
 <body>
 	<div id="loader">
 		<div class="square"></div>
 	</div>
+	<canvas class="threejs"></canvas>
+	<script type="module" src="./script.js"></script>
+</body>
+
+</html> -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Starter</title>
+</head>
+
+<body>
+	<div id="loader">
+		<div class="square"></div>
+	</div>
+
+	<div id="scroll-arrow" aria-hidden="true">
+		<img src="./Icon/arrow.svg" alt="" />
+	</div>
+
+<div id="logo-wrap" aria-hidden="true">
+  <img id="logo" src="./logo/Logo.png" alt="" />
+
+  <div class="logo-mask tl"></div>
+  <div class="logo-mask tr"></div>
+  <div class="logo-mask bl"></div>
+  <div class="logo-mask br"></div>
+</div>
+	
+
+
+
+<!-- Split panels -->
+<div id="about-panels">
+  <!-- behind the card -->
+  <div id="panel-back" class="about-panel">
+    <p>
+      I’m a <span class="highlight">product</span> and
+      <span class="highlight">experience designer</span><br />
+      interested in exploring the <span class="highlight">future of design</span><br />
+      and what that might mean for the physical and digital realms
+      (and maybe even both)
+    </p>
+  </div>
+
+  <!-- in front of the card -->
+  <div id="panel-front" class="about-panel">
+    <p><span class="strong">I’m Jennifer/<span class="highlight">HFYJ</span></strong></p>
+  </div>
+</div>
+
+	<div id="social-links">
+		<a href="https://instagram.com/YOURNAME" class="social-link" target="_blank" rel="noopener">
+			<img src=".\Icon\Instagram.svg" alt="Instagram" class="social-icon" />
+		</a>
+
+		<a href="https://linkedin.com/in/YOURNAME" class="social-link" target="_blank" rel="noopener">
+			<img src=".\Icon\Linkedin.svg" alt="LinkedIn" class="social-icon" />
+		</a>
+
+		<a href="https://behance.net/YOURNAME" class="social-link" target="_blank" rel="noopener">
+			<img src=".\Icon\Email.svg" alt="Email" class="social-icon" />
+		</a>
+				<a href="https://behance.net/YOURNAME" class="social-link" target="_blank" rel="noopener">
+			<img src=".\Icon\Document.svg" alt="CV" class="social-icon" />
+		</a>
+	</div>
+	<!-- Directions overlay (hidden by default) -->
+<div id="directions" aria-hidden="true">
+  <img class="dir-arrow dir-left" src=".\Icon\arrow.svg" alt="" />
+  <div class="dir-text">Scroll to explore my works</div>
+  <img class="dir-arrow dir-right" src=".\Icon\arrow.svg" alt="" />
+</div>
+
+	<div id="black-overlay"></div>
+
 	<canvas class="threejs"></canvas>
 </body>
 

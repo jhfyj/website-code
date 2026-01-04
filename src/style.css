@@ -1,29 +1,433 @@
+@font-face {
+  font-family: "Play";
+  src: url("fonts/Play-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Bold */
+@font-face {
+  font-family: "Play";
+  src: url("fonts/Play-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 body {
+  font-family: "Play";
+  src:
+    url("fonts\Play-Bold.ttf") format("ttf"),
+    url("fonts\Play-Regular.ttf") format("ttf");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+
   margin: 0;
-  overflow: hidden;
-  /* background: linear-gradient(#111133, #41439D, #F0E065); */
-   background-color: black;
+  overflow-x: hidden;
+  background-color: black;
+  color: rgba(255, 255, 255, 1.0);
+    line-height: 24px;
+  /* ✅ default text color */
 }
 
 #loader {
-    position: fixed;
-    inset: 0;
-    background: black;         /* or transparent */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 999999;           /* stay above ReadyMag UI */
+  position: fixed;
+  inset: 0;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999999;
 }
 
 #loader .square {
-    width: 50px;
-    height: 50px;
-    background: #FFD84D;       /* your yellow */
-    animation: pulse 0.9s infinite ease-in-out;
+  width: 50px;
+  height: 50px;
+  background: #FFD84D;
+  animation: pulse 0.9s infinite ease-in-out;
 }
 
 @keyframes pulse {
-    0%   { transform: scale(1);   opacity: 1; }
-    50%  { transform: scale(0.6); opacity: 0.5; }
-    100% { transform: scale(1);   opacity: 1; }
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(0.6);
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
+
+/* Intro Animation Styles */
+canvas.threejs {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+
+}
+
+/* Centered square that touches at least one viewport edge */
+#logo-wrap{
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  width: min(100vw - 10px, 100vh - 10px);
+  height: min(100vw - 10px, 100vh - 10px);
+  transform: translate(-50%, -50%);
+  z-index: 0; /* above canvas */
+  pointer-events: none;
+
+  opacity: 0;
+  filter: blur(0px);
+  transition: opacity 300ms ease, filter 400ms ease, transform 500ms ease;
+}
+
+#logo{
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain; /* if your logo has padding */
+}
+
+/* 4 corner masks (each covers a quadrant) */
+.logo-mask{
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  background: black;
+
+  opacity: 1;
+  transform: scale(1);
+  filter: blur(0px);
+
+  transition: opacity 420ms ease, transform 650ms cubic-bezier(.2,.8,.2,1), filter 650ms ease;
+}
+
+/* Quadrant positions */
+.logo-mask.tl{ left: 0;  top: 15px; }
+.logo-mask.tr{ right: 0; top: 0; }
+.logo-mask.bl{ left: 0;  bottom: 0; }
+.logo-mask.br{ right: 0; bottom: 0; }
+
+/* When we start reveal: masks fade/scale out in a “typing” order */
+#logo-wrap.reveal .logo-mask{
+  opacity: 0;
+  transform: scale(0.92);
+  filter: blur(8px);
+}
+
+#logo-wrap.reveal .logo-mask.tl{ transition-delay: 0ms; }
+#logo-wrap.reveal .logo-mask.tr{ transition-delay: 160ms; }
+#logo-wrap.reveal .logo-mask.bl{ transition-delay: 320ms; }
+#logo-wrap.reveal .logo-mask.br{ transition-delay: 480ms; }
+
+#about-panels {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  display: block;
+}
+
+/* when JS turns it on */
+#about-panels.is-on {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+#panel-front{
+  position: fixed;
+  left: calc(50% - 260px);
+  top: calc(50% - 160px);           /* tune */
+  z-index: 50;               /* ABOVE canvas */
+  opacity: 0;
+  width:fit-content;
+}
+
+#panel-back{
+  position: fixed;
+  left: calc(50% + 50px);
+  top: calc(50% + 150px);           /* tune */
+  z-index: 15;               /* ABOVE canvas */
+  opacity: 0;
+  width: max(360px);
+}
+
+.about-panel{
+  padding: 18px 22px;
+  
+  background: rgba(0,0,0,0.3);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 14px;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 10px 34px rgba(0,0,0,0.35);
+  color: rgba(255,255,255,0.92);
+}
+
+.about-panel p{
+  margin: 0;
+  line-height: 1.5;
+  font-family: "Play", system-ui, sans-serif;
+  font-size: 16px;
+}
+
+.about-panel strong{
+  margin: 0;
+  line-height: 1.5;
+  font-family: "Play", system-ui, sans-serif;
+  font-size: 24px;
+}
+
+.highlight{ color: #FFD700; font-weight: 700; }
+
+
+#social-links {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 50;
+}
+
+.social-link {
+  padding: 12px 12px;
+  background: rgba(255, 255, 255, 0.1);
+  width: 28px; 
+  height: 28px;
+  backdrop-filter: blur(12px);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.social-link img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.social-link:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 215, 0, 0.3);
+  color: #FFD700;
+  transform: translateY(-5px);
+}
+
+@media (max-width: 900px) {
+  #social-links {
+    flex-direction: column;
+    
+    bottom: auto;
+    top: 20px;
+    right: 20px;
+    gap: 16px;
+  }
+
+  .social-link {
+    padding: 12px 12px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 540px) {
+  #description-panel {
+    width: calc(100vw - 140px);
+    left: 40px;
+    bottom: 40px;
+    padding: 30px;
+  }
+
+  #panel-front{
+  position: fixed;
+  left: calc(50% - 200px);
+  top: calc(50% - 160px);           /* tune */
+  z-index: 50;               /* ABOVE canvas */
+  opacity: 0;
+  width:fit-content;
+}
+
+#panel-back{
+  position: fixed;
+  left: calc(50% - 60px);
+  top: calc(50% + 180px);           /* tune */
+  z-index: 15;               /* ABOVE canvas */
+  opacity: 0;
+  width: max(240px);
+}
+
+.about-panel p{
+  margin: 0;
+  line-height: 1.5;
+  font-family: "Play", system-ui, sans-serif;
+  font-size: 12px;
+}
+}
+
+
+
+/* blinking animation */
+@keyframes caretBlink {
+  50% { opacity: 0; }
+}
+
+
+
+#black-overlay {
+  position: fixed;
+  inset: 0;
+  background: black;
+  z-index: 9999;
+  opacity: 1;
+  pointer-events: none;
+  transition: opacity 1s ease;
+}
+
+
+#black-overlay.hidden {
+  opacity: 0;
+}
+
+#scroll-arrow {
+  position: fixed;
+  left: 50%;
+  bottom: 3vh;
+  transform: translateX(-50%);
+  width: clamp(26px, 4vw, 44px);
+  height: auto;
+  opacity: 0;
+  filter: blur(8px);
+  pointer-events: none;
+  z-index: 0;
+  /* above canvas, below other overlays if you want */
+  transition: opacity 500ms ease, filter 600ms ease, transform 600ms ease;
+}
+
+#scroll-arrow img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+#scroll-arrow {
+  position: fixed;
+  left: 50%;
+  bottom: 3vh;
+  transform: translateX(-50%);
+  width: clamp(26px, 4vw, 44px);
+  opacity: 0;
+  filter: blur(8px);
+  pointer-events: none;
+  z-index: 0;
+  /* ✅ make it very high so it can't be hidden */
+  transition: opacity 700ms ease, filter 800ms ease, transform 800ms ease;
+}
+
+#scroll-arrow.is-visible {
+  opacity: 0.8;
+  filter: blur(0px);
+  animation: arrowFloat 1.4s ease-in-out infinite;
+}
+
+@keyframes arrowFloat {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%      { transform: translateX(-50%) translateY(10px); }
+}
+
+
+@keyframes arrowFloat {
+
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  50% {
+    transform: translateX(-50%) translateY(10px);
+  }
+}
+
+
+/* bold but styled */
+#description-panel strong {
+  font-weight: 700;
+}
+
+/* highlight words */
+.highlight {
+  color: #FFD700;
+}
+
+#directions{
+  position: fixed;
+  top: 160px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 18px;
+
+  padding: 14px 22px;
+  border-radius: 999px;
+
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(10px);
+
+  opacity: 0;
+  filter: blur(8px);
+  pointer-events: none;
+
+  z-index: 40; /* above canvas/cards; below panels if yours are 50 */
+  transition: opacity 650ms ease, filter 650ms ease, transform 650ms ease;
+}
+
+#directions.is-visible{
+  opacity: 1;
+  filter: blur(0);
+  transform: translateX(-50%) translateY(0);
+}
+
+#directions.is-hidden{
+  opacity: 0;
+  filter: blur(8px);
+  transform: translateX(-50%) translateY(-10px);
+}
+
+#directions .dir-text{
+  color: rgba(255,255,255,0.95);
+  font-family: "Play", system-ui, sans-serif;
+  font-size: 18px;
+  letter-spacing: 0.2px;
+  white-space: nowrap;
+}
+
+#directions .dir-arrow{
+  width: 28px;
+  height: 28px;
+  opacity: 0.95;
+}
+
+#directions .dir-left{
+  transform: rotate(90deg);   /* down -> left */
+}
+
+#directions .dir-right{
+  transform: rotate(-90deg);  /* down -> right */
+}
+
+
+canvas.threejs { touch-action: none; }
