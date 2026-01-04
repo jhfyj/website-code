@@ -391,7 +391,7 @@ CardLoader2.load("https://jhfyj.github.io/website-code/models/aboutme.glb", (glt
 CardLoader3.load("https://jhfyj.github.io/website-code/models/puregym.glb", (gltf) => {
     const m = gltf.scene;
     cards[2] = m;
-    m.userData.cardIndex = 0;
+    m.userData.cardIndex = 2;
 
     m.scale.set(0.2, 0.2, 0.2);
     m.position.set(Math.sin(THREE.MathUtils.degToRad(2 * 360 / 6)) * 2, -8, Math.cos(THREE.MathUtils.degToRad(2 * 360 / 6)) * 2);
@@ -405,7 +405,7 @@ CardLoader3.load("https://jhfyj.github.io/website-code/models/puregym.glb", (glt
 CardLoader4.load("https://jhfyj.github.io/website-code/models/asba.glb", (gltf) => {
     const m = gltf.scene;
     cards[3] = m;
-    m.userData.cardIndex = 0;
+    m.userData.cardIndex = 3;
 
     m.scale.set(0.2, 0.2, 0.2);
     m.position.set(Math.sin(THREE.MathUtils.degToRad(3 * 360 / 6)) * 2, -8, Math.cos(THREE.MathUtils.degToRad(3 * 360 / 6)) * 2);
@@ -419,7 +419,7 @@ CardLoader4.load("https://jhfyj.github.io/website-code/models/asba.glb", (gltf) 
 CardLoader5.load("https://jhfyj.github.io/website-code/models/leslie.glb", (gltf) => {
     const m = gltf.scene;
     cards[4] = m;
-    m.userData.cardIndex = 0;
+    m.userData.cardIndex = 4;
 
     m.scale.set(0.2, 0.2, 0.2);
     m.position.set(Math.sin(THREE.MathUtils.degToRad(4 * 360 / 6)) * 2, -8, Math.cos(THREE.MathUtils.degToRad(4 * 360 / 6)) * 2);
@@ -433,7 +433,7 @@ CardLoader5.load("https://jhfyj.github.io/website-code/models/leslie.glb", (gltf
 CardLoader6.load("https://jhfyj.github.io/website-code/models/techatnyu.glb", (gltf) => {
     const m = gltf.scene;
     cards[5] = m;
-    m.userData.cardIndex = 0;
+    m.userData.cardIndex = 5;
 
     m.scale.set(0.2, 0.2, 0.2);
     m.position.set(Math.sin(THREE.MathUtils.degToRad(5 * 360 / 6)) * 2, -8, Math.cos(THREE.MathUtils.degToRad(5 * 360 / 6)) * 2);
